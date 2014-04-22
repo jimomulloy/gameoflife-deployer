@@ -9,4 +9,34 @@
     <artifactId>gameoflife-deployer</artifactId>
     <packaging>war</packaging>
     <name>gameoflife-deployer</name>
+    <build>
+        <plugins>
+             <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>gameoflife</warName>
+                    <overlays>
+                        <overlay>
+                            <groupId>com.wakaleo.gameoflife</groupId>
+   							<artifactId>gameoflife-web</artifactId>
+                        </overlay>
+                    </overlays>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.wakaleo.gameoflife</groupId>
+            <artifactId>gameoflife-web</artifactId>
+            <type>war</type>
+            <version>${target.version}</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <target.version>RELEASE</target.version>
+        <tomcat.manager.url>http://localhost:8888/manager</tomcat.manager.url>
+        <tomcat.username>admin</tomcat.username>
+        <tomcat.password>password</tomcat.password>
+    </properties>
 </project>
